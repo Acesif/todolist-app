@@ -8,6 +8,10 @@ const Sidebar = () => {
         {id:0,
         value: 'Untitled Project'}
     ]);
+    if(localStorage.getItem("Sections") == null){
+        const str = JSON.stringify(projectList)
+        localStorage.setItem("Sections",str)
+    }
     const [tab, setTab] = useContext(context);
     const addProject = () => {
         const title = prompt("Enter Project Name")
@@ -16,6 +20,8 @@ const Sidebar = () => {
                 id:projectList.length,
                 value: title
             }])
+            console.log(projectList);
+            localStorage.setItem("Sections",JSON.stringify(projectList))
         }
     }
     const handleClick = (e) =>{
