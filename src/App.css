@@ -1,0 +1,52 @@
+.App {
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+  min-height: 100vh;
+}
+.App .sidebar {
+  background-color: rgb(48, 48, 48);
+}
+.App .sidebar h3 {
+  color: rgb(221, 218, 218);
+}
+.App .sidebar .li, .App .sidebar li {
+  display: flex;
+  justify-content: space-between;
+  list-style: none;
+  background-color: rgb(104, 104, 104);
+  cursor: pointer;
+}
+.App .sidebar .li .project-crud, .App .sidebar li .project-crud {
+  display: flex;
+  gap: 10px;
+}
+.App .sidebar .li > li {
+  pointer-events: none;
+  user-select: none;
+}
+.App .sidebar .check {
+  background-color: green;
+}
+.App .sidebar .check > li {
+  background-color: green;
+}
+.App .sidebar #add {
+  display: flex;
+  justify-content: center;
+}
+.App .content {
+  text-align: center;
+  background-color: rgb(76, 76, 76);
+}
+.App .content .content-container {
+  display: flex;
+  justify-content: center;
+}
+.App .content .content-container .form-label {
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+}
+
+/*# sourceMappingURL=App.css.map */
