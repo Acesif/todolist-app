@@ -4,14 +4,7 @@ import { BsPencilFill } from 'react-icons/bs';
 import { context } from '../App';
 
 const Sidebar = () => {
-    const [projectList,setProjectList] = useState([
-        {id:0,
-        value: 'Untitled Project'}
-    ]);
-    if(localStorage.getItem("Sections") == null){
-        const str = JSON.stringify(projectList)
-        localStorage.setItem("Sections",str)
-    }
+    const [projectList,setProjectList] = useState();
     const [tab, setTab] = useContext(context);
     const addProject = () => {
         const title = prompt("Enter Project Name")
@@ -20,9 +13,15 @@ const Sidebar = () => {
                 id:projectList.length,
                 value: title
             }])
-            console.log(projectList);
-            localStorage.setItem("Sections",JSON.stringify(projectList))
         }
+    }
+    if(projectList.length === 0){
+        setProjectList([
+            {
+                id:0,
+                value: "Untitled Project"
+            }
+        ])
     }
     const handleClick = (e) =>{
         const list = document.querySelectorAll('.li');
