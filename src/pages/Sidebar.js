@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { AiFillDelete } from 'react-icons/ai';
 import { BsPencilFill } from 'react-icons/bs';
 import { context } from '../App';
@@ -14,15 +14,23 @@ const Sidebar = () => {
                 value: title
             }])
         }
+    } 
+    if(projectList === undefined){
+        if(localStorage.getItem("Sections")){
+            setProjectList(JSON.parse(localStorage.getItem("Sections")));
+        }
+        else{
+            setProjectList([
+                {
+                    id:0,
+                    value: "Untitled Project"
+                }
+            ])
+        }
     }
-    if(projectList.length === 0){
-        setProjectList([
-            {
-                id:0,
-                value: "Untitled Project"
-            }
-        ])
-    }
+    useEffect(()=>{
+        localStorage.setItem("Sections",JSON.stringify(projectList))
+    })
     const handleClick = (e) =>{
         const list = document.querySelectorAll('.li');
         list.forEach(element => {
@@ -51,7 +59,7 @@ const Sidebar = () => {
         <ul className="grey list-group list-group-flush">
             <div className='projectList'>
                 {
-                    projectList.map((item) =>(
+                    projectList?.map((item) =>(
                         <div key={item.id} id={item.id} onClick={handleClick} className='li list-group-item'>
                             <li>
                                 {item.value}
