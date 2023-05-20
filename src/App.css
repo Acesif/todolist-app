@@ -48,5 +48,9 @@
   display: flex;
   gap: 20px;
 }
+.App .content .item-list {
+  display: flex;
+  margin-left: 45%;
+}
 
 /*# sourceMappingURL=App.css.map */
