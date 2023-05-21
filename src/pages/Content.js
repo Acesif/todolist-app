@@ -7,21 +7,21 @@ const Content = () => {
   const projectTitle = projectList[tab].value;
   const [itemList, setItemList] = useState([])
   let items;
-  const addToList = () => {
-    let task = document.getElementById("input-text").value
-    setItemList([...itemList,task])
-  }
-  useEffect(()=>{
-    localStorage.setItem(`${tab}`,JSON.stringify(itemList))
-  },[itemList,tab])
 
-  useEffect(()=>{
-    localStorage.setItem(tab,task)
-  },[tab,task])
-  
-  if(localStorage.getItem(`${tab}`)){
-    items = JSON.parse(localStorage.getItem(`${tab}`))
+  const addToList = () => {
+    let value = document.getElementById("input-text").value
+    setTask(value)
+    if(task !== []){
+      setItemList([...itemList,task])
+      localStorage.setItem(`${tab}`,JSON.stringify(itemList))
+    }
   }
+  useEffect(()=>{
+    if(localStorage.getItem(`${tab}`)){
+      setItemList(JSON.parse(localStorage.getItem(`${tab}`)))
+    }
+  },[setItemList,tab])
+
   return (
     <div className='content'>
         <h2>Checklist</h2>
@@ -35,7 +35,7 @@ const Content = () => {
           </div>
         </div>
         {
-          items?.map((i)=>(
+          itemList.map((i)=>(
             <div key={i} className="form-check item-list">
               <label className="form-check-label">
                 <input className="form-check-input" type="checkbox" />
