@@ -6,12 +6,22 @@ const Content = () => {
   const projectList = JSON.parse(localStorage.getItem("Sections"))
   const projectTitle = projectList[tab].value;
   const [itemList, setItemList] = useState([])
-  const addToList = (task) => {
+  let items;
+  const addToList = () => {
+    let task = document.getElementById("input-text").value
     setItemList([...itemList,task])
   }
   useEffect(()=>{
     localStorage.setItem(`${tab}`,JSON.stringify(itemList))
   },[itemList,tab])
+
+  useEffect(()=>{
+    localStorage.setItem(tab,task)
+  },[tab,task])
+  
+  if(localStorage.getItem(`${tab}`)){
+    items = JSON.parse(localStorage.getItem(`${tab}`))
+  }
   return (
     <div className='content'>
         <h2>Checklist</h2>
@@ -19,19 +29,14 @@ const Content = () => {
         <div>
           <div className="content-container mb-3">
             <label className="form-label">
-              <input type="text" onChange={(e)=>setTask(e.target.value)} value={task} className="form-control" />
-              <button onClick={()=> addToList(task)}>Add</button>
-              {
-                useEffect(()=>{
-                  localStorage.setItem(tab,task)
-                },[tab,task])
-              }
+              <input type="text" className="form-control" id='input-text' />
+              <button onClick={()=> addToList()}>Add</button>
             </label>
           </div>
         </div>
         {
-          itemList.map((i)=>(
-            <div className="form-check item-list">
+          items?.map((i)=>(
+            <div key={i} className="form-check item-list">
               <label className="form-check-label">
                 <input className="form-check-input" type="checkbox" />
                 {i}
