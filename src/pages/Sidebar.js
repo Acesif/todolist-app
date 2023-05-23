@@ -4,7 +4,29 @@ import { BsPencilFill } from 'react-icons/bs';
 import { context } from '../App';
 
 const Sidebar = () => {
+    // Initializing first value in the sidebar
     const [projectList,setProjectList] = useState();
+    window.addEventListener("load",()=>{
+        if(localStorage.getItem("Sections")){
+            const strToObj = JSON.parse(localStorage.getItem("Sections"))
+            setProjectList(strToObj)
+        }
+        else if(projectList === undefined){
+            setProjectList([
+                {
+                    id:0,
+                    value: "Untitled"
+                }
+            ])
+        }
+    })
+    useEffect(()=>{
+        if(projectList !== undefined){
+            localStorage.setItem("Sections",JSON.stringify(projectList))
+        }
+    },[projectList])
+    //
+    // Which tab is currently clicked on
     const [tab, setTab] = useContext(context);
     const addProject = () => {
         const title = prompt("Enter Project Name")
@@ -15,22 +37,6 @@ const Sidebar = () => {
             }])
         }
     } 
-    if(projectList === undefined){
-        if(localStorage.getItem("Sections")){
-            setProjectList(JSON.parse(localStorage.getItem("Sections")));
-        }
-        else{
-            setProjectList([
-                {
-                    id:0,
-                    value: "Untitled Project"
-                }
-            ])
-        }
-    }
-    useEffect(()=>{
-        localStorage.setItem("Sections",JSON.stringify(projectList))
-    })
     const handleClick = (e) =>{
         const list = document.querySelectorAll('.li');
         list.forEach(element => {
