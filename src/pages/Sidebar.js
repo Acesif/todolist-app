@@ -60,7 +60,6 @@ const Sidebar = () => {
     }
     return (
         <div className='sidebar'>
-        <div className='projects'>
         <h3>Projects</h3>
         <ul className="grey list-group list-group-flush">
             <div className='projectList'>
@@ -81,7 +80,6 @@ const Sidebar = () => {
             <li onClick={addProject} id='add' className="list-group-item">+</li>
         </ul>
         </div>
-    </div>
   )
 }
 

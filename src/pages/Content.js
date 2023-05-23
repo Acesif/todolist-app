@@ -1,24 +1,27 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { context } from '../App';
 const Content = () => {
-  const [task,setTask] = useState("");
   const [tab,setTab] = useContext(context)
   const projectList = JSON.parse(localStorage.getItem("Sections"))
   const projectTitle = projectList[tab].value;
   const [itemList, setItemList] = useState([])
-  let items;
 
   const addToList = () => {
     let value = document.getElementById("input-text").value
-    setTask(value)
-    if(task !== []){
-      setItemList([...itemList,task])
-      localStorage.setItem(`${tab}`,JSON.stringify(itemList))
-    }
+    setItemList([...itemList,value])
   }
+  
+  // need to set a useEffect such that the localstorage gets updated when itemlist is updated
+  useEffect(()=>{
+    localStorage.setItem(`${tab}`,JSON.stringify(itemList))
+  },[itemList])
+
   useEffect(()=>{
     if(localStorage.getItem(`${tab}`)){
       setItemList(JSON.parse(localStorage.getItem(`${tab}`)))
+    }
+    else{
+      setItemList([])
     }
   },[setItemList,tab])
 
@@ -35,7 +38,7 @@ const Content = () => {
           </div>
         </div>
         {
-          itemList.map((i)=>(
+          itemList?.map((i)=>(
             <div key={i} className="form-check item-list">
               <label className="form-check-label">
                 <input className="form-check-input" type="checkbox" />
