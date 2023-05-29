@@ -1,56 +1,23 @@
-.App {
-  width: 100%;
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Poppins";
+}
+.section{
   display: grid;
-  grid-template-columns: 1fr 4fr;
+  grid-template-columns: 1.2fr 5fr;
   min-height: 100vh;
+  min-width: 100%;
 }
-.App .sidebar {
-  background-color: rgb(48, 48, 48);
+.sidebar{
+  background-color: rgb(88, 88, 88);
 }
-.App .sidebar h3 {
-  color: rgb(221, 218, 218);
+.content{
+  background-color: rgb(160, 160, 160);
 }
-.App .sidebar .li, .App .sidebar li {
-  display: flex;
-  justify-content: space-between;
-  list-style: none;
-  background-color: rgb(104, 104, 104);
-  cursor: pointer;
+.project-list{
+  margin-left: 30px;
 }
-.App .sidebar .li .project-crud, .App .sidebar li .project-crud {
-  display: flex;
-  gap: 10px;
-}
-.App .sidebar .li > li {
-  pointer-events: none;
-  user-select: none;
-}
-.App .sidebar .check {
-  background-color: green;
-}
-.App .sidebar .check > li {
-  background-color: green;
-}
-.App .sidebar #add {
-  display: flex;
-  justify-content: center;
-}
-.App .content {
-  text-align: center;
-  background-color: rgb(76, 76, 76);
-}
-.App .content .content-container {
-  display: flex;
-  justify-content: center;
-}
-.App .content .content-container .form-label {
-  margin-top: 20px;
-  display: flex;
-  gap: 20px;
-}
-.App .content .item-list {
-  display: flex;
-  margin-left: 45%;
-}
-
-/*# sourceMappingURL=App.css.map */

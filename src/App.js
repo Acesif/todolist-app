@@ -1,19 +1,17 @@
-import { createContext, useState } from 'react';
 import './App.css';
-import Content from './pages/Content';
-import Sidebar from './pages/Sidebar';
-
-export const context = createContext()
+import "@fontsource/poppins";
+import "@fontsource/poppins/400.css"
+import Sidebar from './Components/Sidebar';
+import Content from './Components/Content';
 
 function App() {
-  const [tab,setTab] = useState(0);
   return (
-    <context.Provider value={[tab,setTab]}>
-      <div className="App">
+    <div className="App">
+      <div className="section">
         <Sidebar/>
         <Content/>
       </div>
-    </context.Provider>
+    </div>
   );
 }
 
