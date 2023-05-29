@@ -36,7 +36,7 @@ function Sidebar() {
         </form>
         {input.map(e=>(
            <div className='project-list'>
-            <li>{e.value}</li>
+            <h5 key={e.id}>{e.value}</h5>
            </div>
         ))}
     </div>
