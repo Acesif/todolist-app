@@ -1,8 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
+import { Context } from '../App'
 
 function Sidebar() {
     const [input,setInput] = useState([])
     const [saveState,setsaveState] = useState(false)
+    const [tab,setTab] = useContext(Context)
     const handleAdd = () => {
         let val = document.getElementById("project-title")
         if((val.value).trim() !== ""){
@@ -47,8 +49,8 @@ function Sidebar() {
             <div onClick={()=> handleAdd()} className="btn btn-primary mb-2">Add</div>
         </form>
         {input.map(e=>(
-           <div className='project-list'>
-            <h5 key={e.id}>{e.value}</h5>
+           <div key={e.id} className='project-list'>
+            <h5 onClick={() => setTab(e.id)}>{e.value}</h5>
            </div>
         ))}
     </div>
