@@ -12,7 +12,7 @@ function Content() {
   return (
     <div className="content">
       <h1>{title}</h1>
-      <ItemList/>
+      <ItemList tab={tab}/>
     </div>
   )
 }
