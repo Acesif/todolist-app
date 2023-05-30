@@ -10,9 +10,9 @@ function Content() {
     setTitle(project_name[tab].value);
   },[tab])
   return (
-    <div className="content">
-      <h1>{title}</h1>
-      <ItemList tab={tab}/>
+    <div className="content">     
+        <h1>{title}</h1>
+        <ItemList tab={tab}/>
     </div>
   )
 }

@@ -1,32 +1,20 @@
-import React, { useState } from 'react'
+import React, { createContext, useState } from 'react'
+import Items from './Items'
+
+export const activeContext = createContext();
 
 function ItemList({tab}) {
   const [item,setItem] = useState([])
-  const handleAdd = () => {
-    let val = document.getElementById("item-name")
-    if((val.value).trim() !== ""){
-        
-        val.value = ""
-    }
-    else{
-        alert("Item cannot be empty")
-    }
-}
+  const [active,setActive] = useState(false)
   return (
     <div>
       <div className='add-to-list'>
-        <form className="row g-3">
-          <div className="col-auto">
-            <label className="visually-hidden">
-              <input type="text" id='item-name' className="form-control" placeholder="Enter an activity" />
-            </label>
-          </div>
-          <div className="col-auto">
-            <div onClick={()=> handleAdd()} className="btn btn-primary mb-3">Add Item</div>
-          </div>
-        </form>
+        <div onClick={()=> setActive(true)} className='btn btn-primary'>Add</div>
+        <activeContext.Provider value={[active,setActive]}>
+          {active && <Items tab={tab}/>}
+        </activeContext.Provider>
       </div>
-      <h1>{tab}</h1>
+      {/* <h1>{tab}</h1> */}
     </div>
   )
 }
