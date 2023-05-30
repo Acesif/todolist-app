@@ -5,12 +5,17 @@ function Sidebar() {
     const [saveState,setsaveState] = useState(false)
     const handleAdd = () => {
         let val = document.getElementById("project-title")
-        setInput([...input,{
-            id:0,
-            value: val.value
-        }])
-        setsaveState(true)
-        val.value = ""
+        if((val.value).trim() !== ""){
+            setInput([...input,{
+                id:input.length,
+                value: val.value
+            }])
+            setsaveState(true)
+            val.value = ""
+        }
+        else{
+            alert("Project name cannot be empty")
+        }
     }
     useEffect(()=>{
         if (saveState){
@@ -24,13 +29,20 @@ function Sidebar() {
     if (project_lget !== null) {
         setInput(project_lget);
     }
-    },[setInput])
+    else{
+        setInput([{
+            id:0,
+            value: "Untitled Project"
+        }])
+    }
+    //eslint-disable-next-line
+    },[])
 
   return (
     <div className="sidebar">
         <form className="form-inline mt-4">
             <div className="form-group mx-sm-3 mb-2">
-                <input type="text" id='project-title' className="form-control" placeholder="Enter Project Name" />
+                <input type="text" id='project-title' className="form-control" placeholder="Enter Project Name" required/>
             </div>
             <div onClick={()=> handleAdd()} className="btn btn-primary mb-2">Add</div>
         </form>
