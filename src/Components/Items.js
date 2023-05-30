@@ -4,14 +4,15 @@ import { activeContext } from './ItemList'
 function Items({tab}) {
   const [active,setActive] = useContext(activeContext)
   const handleAdd = () => {
-    let val = document.getElementById("item-name")
-    if((val.value).trim() !== ""){
+    // let val = document.getElementById("item-name")
+    // if((val.value).trim() !== ""){
         
-        val.value = ""
-    }
-    else{
-        alert("Item cannot be empty")
-    }
+    //     val.value = ""
+    // }
+    // else{
+    //     alert("Item cannot be empty")
+    // }
+    setActive(false)
   }
   return (
     <div id='item-form'>
