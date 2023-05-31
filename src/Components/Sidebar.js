@@ -36,6 +36,13 @@ function Sidebar() {
             id:0,
             value: "Untitled Project"
         }])
+        const project_lstore = JSON.stringify(
+            [{
+                id:0,
+                value: "Untitled Project"
+            }]
+        );
+        localStorage.setItem('Sections', project_lstore);
     }
     //eslint-disable-next-line
     },[])
@@ -48,7 +55,7 @@ function Sidebar() {
             </div>
             <div onClick={()=> handleAdd()} className="btn btn-primary mb-2">Add</div>
         </form>
-        {input.map(e=>(
+        {input?.map(e=>(
            <div key={e.id} className='project-list'>
             <h5 onClick={() => setTab(e.id)}>{e.value}</h5>
            </div>
