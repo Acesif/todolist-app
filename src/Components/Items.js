@@ -1,30 +1,19 @@
-import React, { useContext, useEffect, useState } from 'react'
-import { activeContext } from './ItemList'
+import React, { useContext, useState} from 'react'
+import { activeContext, taskContext } from './ItemList'
 
 function Items({tab}) {
   const [active,setActive] = useContext(activeContext)
-  const [item,setItem] = useState([])
+  const [task,setTask] = useContext(taskContext)
   const handleAdd = () => {
-    const name = document.getElementById("activity-name").value
-    const deadline = document.getElementById("deadline").value
-    const desc = document.getElementById("description").value
-    if(!name){
-      alert("Task name cannot be empty")
-    }
-    if(!deadline){
-      alert("Deadline cannot be empty")
-    }
-    if(name && deadline){
-      const values = {
-        name,
-        deadline,
-        desc
-      }
-      localStorage.setItem(tab,JSON.stringify(values))
-    }
+    let name = document.getElementById("activity-name").value
+    let deadline = document.getElementById("deadline").value
+    let description = document.getElementById("description").value
+    setTask(
+      {
+      name,deadline,description
+      })
     setActive(false)
   }
-
 
   return (
     <div id='item-form'>
