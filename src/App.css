@@ -35,12 +35,17 @@ body {
   transition: all 0.1s ease-in-out
 }
 #item-form{
-  margin-top: 50%;
+  position: absolute;
+  background-color: grey;
   border: 1px solid black;
-  padding: 2rem 4rem;
+  padding: 1rem 5rem;
 }
 .add-to-list{
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+.blur{
+  filter: blur(5px);
 }

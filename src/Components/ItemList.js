@@ -1,30 +1,26 @@
-import React, { createContext, useEffect, useState } from 'react'
+import React, { createContext, useContext, useEffect, useState } from 'react'
 import Items from './Items'
+import { activeContext } from '../App';
 
-export const activeContext = createContext();
 export const taskContext = createContext();
 
 function ItemList({tab}) {
-  const [item,setItem] = useState([])
-  const [active,setActive] = useState(false)
+  const [active,setActive] = useContext(activeContext)
   const [task,setTask] = useState()
   const [taskList,setTaskList] = useState([])
   
-  useEffect(()=>{
-    if(task){
-      setTaskList(task)
-      localStorage.setItem(tab,JSON.stringify(task))
-    }
-  },[task])
 
   return (
     <div>
       <taskContext.Provider value={[task,setTask]}>
         <div className='add-to-list'>
           <div onClick={()=> setActive(true)} className='btn btn-primary'>Add</div>
-          <activeContext.Provider value={[active,setActive]}>
             {active && <Items tab={tab}/>}
-          </activeContext.Provider>
+          <div>
+            {taskList?.map((t)=>(
+              <p>{t.name}</p>
+            ))}
+          </div>
         </div>
       </taskContext.Provider>
       </div>

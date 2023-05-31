@@ -1,5 +1,6 @@
 import React, { useContext, useState} from 'react'
-import { activeContext, taskContext } from './ItemList'
+import { taskContext } from './ItemList'
+import { activeContext } from '../App'
 
 function Items({tab}) {
   const [active,setActive] = useContext(activeContext)
@@ -17,9 +18,10 @@ function Items({tab}) {
 
   return (
     <div id='item-form'>
+      <div className='blur-bg'></div>
       <div className="rendered-form">
         <div>
-          <h1>Add Entry</h1>
+          <h2>Add Entry</h2>
         </div>
         <div className="formbuilder-text form-group">
           <label className="formbuilder-text-label">
