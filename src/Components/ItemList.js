@@ -10,6 +10,12 @@ function ItemList({tab}) {
   const [task,setTask] = useState()
   const [taskList,setTaskList] = useState([])
   
+  useEffect(()=>{
+    if(task){
+      setTaskList(task)
+      localStorage.setItem(tab,JSON.stringify(task))
+    }
+  },[task])
 
   return (
     <div>
