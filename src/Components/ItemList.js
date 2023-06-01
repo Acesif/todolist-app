@@ -8,6 +8,12 @@ function ItemList({tab}) {
   const [active,setActive] = useContext(activeContext)
   const [task,setTask] = useState([])
 
+  useEffect(()=>{
+    if(task.length !== 0){
+      localStorage.setItem(tab,JSON.stringify(task))
+    }
+  },[task])
+
   return (
     <div>
       <taskContext.Provider value={[task,setTask]}>
@@ -17,7 +23,7 @@ function ItemList({tab}) {
           <div>
             {
               task?.map(e=>(
-                <p>{e.name}</p>
+                <p key={e.name}>{e.name}</p>
               ))
             }
           </div>
