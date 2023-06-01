@@ -28,10 +28,14 @@ function ItemList({tab}) {
         <div className='add-to-list'>
           <div onClick={()=> setActive(true)} className='btn btn-primary'>Add</div>
             {active && <Items tab={tab}/>}
-          <div>
+          <div className='grid-parent'>
             {
               task?.map(e=>(
-                <p key={e.name}>{e.name}</p>
+                <div className={e.name}>
+                  <p><strong>Task:</strong> {e.name}</p>
+                  <p><strong>Deadline:</strong> {e.deadline}</p>
+                  <p><strong>Description:</strong> {e.description}</p>
+                </div>
               ))
             }
           </div>

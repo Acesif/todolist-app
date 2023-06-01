@@ -9,10 +9,12 @@ function Items({tab}) {
     let name = document.getElementById("activity-name").value
     let deadline = document.getElementById("deadline").value
     let description = document.getElementById("description").value
-    setTask(
-      [...task,{
-      name,deadline,description
-      }])
+    if(name && deadline){
+      setTask(
+        [...task,{
+        name,deadline,description
+        }])
+    }
     setActive(false)
   }
 
