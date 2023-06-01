@@ -13,6 +13,14 @@ function ItemList({tab}) {
       localStorage.setItem(tab,JSON.stringify(task))
     }
   },[task])
+  useEffect(()=>{
+    if(localStorage.getItem(tab)){
+      setTask(JSON.parse(localStorage.getItem(tab)))
+    }
+    else{
+      setTask([])
+    }
+  },[tab])
 
   return (
     <div>
