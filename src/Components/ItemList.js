@@ -6,9 +6,7 @@ export const taskContext = createContext();
 
 function ItemList({tab}) {
   const [active,setActive] = useContext(activeContext)
-  const [task,setTask] = useState()
-  const [taskList,setTaskList] = useState([])
-  
+  const [task,setTask] = useState([])
 
   return (
     <div>
@@ -17,9 +15,11 @@ function ItemList({tab}) {
           <div onClick={()=> setActive(true)} className='btn btn-primary'>Add</div>
             {active && <Items tab={tab}/>}
           <div>
-            {taskList?.map((t)=>(
-              <p>{t.name}</p>
-            ))}
+            {
+              task?.map(e=>(
+                <p>{e.name}</p>
+              ))
+            }
           </div>
         </div>
       </taskContext.Provider>

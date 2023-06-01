@@ -10,9 +10,9 @@ function Items({tab}) {
     let deadline = document.getElementById("deadline").value
     let description = document.getElementById("description").value
     setTask(
-      {
+      [...task,{
       name,deadline,description
-      })
+      }])
     setActive(false)
   }
 
