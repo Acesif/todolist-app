@@ -7,7 +7,7 @@ function Content() {
   const [title,setTitle] = useState()
   useEffect(()=>{
     const project_name = JSON.parse(localStorage.getItem("Sections"))
-    setTitle(project_name[tab].value);
+    setTitle(project_name[tab]?.value);
   },[tab])
   return (
     <div className="content">     

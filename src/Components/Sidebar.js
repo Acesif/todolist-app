@@ -80,8 +80,8 @@ function Sidebar() {
             <div onClick={()=> handleAdd()} className="btn btn-primary mb-2">Add</div>
         </form>
         {input?.map(e=>(
-           <div key={e.id} className='project-list'>
-            <h5 onClick={() => setTab(e.id)}>{e.value}</h5>
+           <div key={e.id} onClick={() => setTab(e.id)} className='project-list'>
+            <h5>{e.value}</h5>
             <div className='actions-sidebar'>
                     <div onClick={()=>handleDelete(e.id)} id='delete'>
                       <AiFillDelete/>
