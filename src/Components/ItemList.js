@@ -47,9 +47,9 @@ function ItemList({tab}) {
               task?.map(e=>(
                 <div key={e.name}>
                   <div className='details'>
-                    <p><strong>Task:</strong> {e.name}</p>
-                    <p><strong>Deadline:</strong> {e.deadline}</p>
-                    <p><strong>Description:</strong> {e.description}</p>
+                    <p><strong>Task</strong><br /> {e.name}</p>
+                    <p><strong>Deadline</strong><br /> {e.deadline}</p>
+                    <p><strong>Description</strong><br /> {e.description}</p>
                   </div>
                   <div key={e.name} className='actions'>
                     <div onClick={()=>handleDelete(e.name)} id='delete'>

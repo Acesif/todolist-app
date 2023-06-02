@@ -35,12 +35,12 @@ function Sidebar() {
     else{
         setInput([{
             id:0,
-            value: "Untitled Project"
+            value: "Temporary Project"
         }])
         const project_lstore = JSON.stringify(
             [{
                 id:0,
-                value: "Untitled Project"
+                value: "Temporary Project"
             }]
         );
         localStorage.setItem('Sections', project_lstore);
