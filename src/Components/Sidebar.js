@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react'
 import { Context } from '../App'
+import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 
 function Sidebar() {
     const [input,setInput] = useState([])
@@ -47,6 +48,29 @@ function Sidebar() {
     //eslint-disable-next-line
     },[])
 
+    const handleDelete = (item) => {
+        if(item !== 0){
+            const projectList = input.filter(e => {
+                return e.id !== item;
+            })
+            setInput(projectList)
+            setsaveState(true)
+        }
+    }
+    const handleEdit = (item) => {
+        const editedValue = prompt("Enter updated section name");
+        if(editedValue !== ""){
+            const updatedArr = input.map(e=>{
+                if(e.id === item){
+                    input[item].value = editedValue
+                }
+                return e
+            })
+            setInput(updatedArr)
+            setsaveState(true)
+        }
+    }
+
   return (
     <div className="sidebar">
         <form className="form-inline mt-4">
@@ -58,6 +82,14 @@ function Sidebar() {
         {input?.map(e=>(
            <div key={e.id} className='project-list'>
             <h5 onClick={() => setTab(e.id)}>{e.value}</h5>
+            <div className='actions-sidebar'>
+                    <div onClick={()=>handleDelete(e.id)} id='delete'>
+                      <AiFillDelete/>
+                    </div>
+                    <div onClick={()=>handleEdit(e.id)} id="edit">
+                      <AiFillEdit/>
+                    </div>
+                  </div>
            </div>
         ))}
     </div>

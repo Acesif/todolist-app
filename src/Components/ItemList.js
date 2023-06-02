@@ -1,6 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import Items from './Items'
 import { activeContext } from '../App';
+import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
 
 export const taskContext = createContext();
 
@@ -22,6 +23,13 @@ function ItemList({tab}) {
     }
   },[tab])
 
+  const handleDelete = (item) => {
+    console.log(item.target);
+  }
+  const handleEdit = (item) => {
+    console.log(item.target);
+  }
+
   return (
     <div>
       <taskContext.Provider value={[task,setTask]}>
@@ -31,17 +39,27 @@ function ItemList({tab}) {
           <div className='grid-parent'>
             {
               task?.map(e=>(
-                <div className={e.name}>
-                  <p><strong>Task:</strong> {e.name}</p>
-                  <p><strong>Deadline:</strong> {e.deadline}</p>
-                  <p><strong>Description:</strong> {e.description}</p>
+                <div key={e.name}>
+                  <div className='details'>
+                    <p><strong>Task:</strong> {e.name}</p>
+                    <p><strong>Deadline:</strong> {e.deadline}</p>
+                    <p><strong>Description:</strong> {e.description}</p>
+                  </div>
+                  <div key={e.name} className='actions'>
+                    <div onClick={(e)=>handleDelete(e)} id='delete'>
+                      <AiFillDelete/>
+                    </div>
+                    <div onClick={(e)=>handleEdit(e)} id="edit">
+                      <AiFillEdit/>
+                    </div>
+                  </div>
                 </div>
               ))
             }
           </div>
         </div>
       </taskContext.Provider>
-      </div>
+    </div>
   )
 }
 
