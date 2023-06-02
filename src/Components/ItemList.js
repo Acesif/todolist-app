@@ -13,6 +13,9 @@ function ItemList({tab}) {
     if(task.length !== 0){
       localStorage.setItem(tab,JSON.stringify(task))
     }
+    else{
+      localStorage.setItem(tab,JSON.stringify([]))
+    }
   },[task])
   useEffect(()=>{
     if(localStorage.getItem(tab)){
@@ -24,10 +27,13 @@ function ItemList({tab}) {
   },[tab])
 
   const handleDelete = (item) => {
-    console.log(item.target);
-  }
+    const projectList = task.filter(e => {
+      return e.name !== item;
+    })
+    setTask(projectList)
+}
   const handleEdit = (item) => {
-    console.log(item.target);
+    console.log(item);
   }
 
   return (
@@ -46,10 +52,10 @@ function ItemList({tab}) {
                     <p><strong>Description:</strong> {e.description}</p>
                   </div>
                   <div key={e.name} className='actions'>
-                    <div onClick={(e)=>handleDelete(e)} id='delete'>
+                    <div onClick={()=>handleDelete(e.name)} id='delete'>
                       <AiFillDelete/>
                     </div>
-                    <div onClick={(e)=>handleEdit(e)} id="edit">
+                    <div onClick={()=>handleEdit(e.name)} id="edit">
                       <AiFillEdit/>
                     </div>
                   </div>
