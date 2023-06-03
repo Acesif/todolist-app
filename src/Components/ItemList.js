@@ -1,7 +1,7 @@
 import React, { createContext, useContext, useEffect, useState } from 'react'
 import Items from './Items'
 import { activeContext } from '../App';
-import { AiFillDelete, AiFillEdit } from 'react-icons/ai';
+import { AiFillDelete } from 'react-icons/ai';
 
 export const taskContext = createContext();
 
@@ -33,7 +33,13 @@ function ItemList({tab}) {
     setTask(projectList)
 }
   const handleCheck = (item) => {
-
+    const checkeditems = task.map(e=>{
+      if(e.name === item){
+        e.done = !e.done
+      }
+      return e
+    })
+    setTask(checkeditems)
   }
 
   return (
@@ -56,9 +62,9 @@ function ItemList({tab}) {
                       <AiFillDelete/>
                     </div>
                     <div onClick={()=>handleCheck(e.name)} id="checkbox">
-                      <div className='check-container'>
+                      <div className={`check-container ${e.done?"checked":""}`}>
                         <p className='check-text'>Done</p>
-                        <input type="checkbox" id="done" />
+                        <input type="checkbox" checked={e.done} id="done" />
                       </div>
                     </div>
                   </div>

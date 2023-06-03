@@ -54,6 +54,7 @@ function Sidebar() {
                 return e.id !== item;
             })
             setInput(projectList)
+            localStorage.removeItem(item)
             setsaveState(true)
         }
     }

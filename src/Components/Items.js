@@ -15,7 +15,7 @@ function Items({tab}) {
     if(name && deadline){
       setTask(
         [...task,{
-        name,deadline,description
+        name,deadline,description,done:false
         }])
     }
     setActive(false)
