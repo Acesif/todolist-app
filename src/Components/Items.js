@@ -9,6 +9,9 @@ function Items({tab}) {
     let name = document.getElementById("activity-name").value
     let deadline = document.getElementById("deadline").value
     let description = document.getElementById("description").value
+    if(description === ""){
+      description = "..."
+    }
     if(name && deadline){
       setTask(
         [...task,{

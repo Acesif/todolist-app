@@ -84,3 +84,25 @@ body {
 #edit>*{
   pointer-events: none;
 }
+.check-container{
+  font-size: 20px;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  border: 1px solid black;
+  padding: 0.05rem 0.3rem;
+}
+.check-container{
+  background-color: greenyellow;
+}
+.check-text{
+  margin-bottom: 0px;
+}
+#checkbox{
+  display: flex;
+  align-items: center;
+}
+input#done{
+  width: 20px;
+  height: 20px;
+}

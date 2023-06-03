@@ -32,8 +32,8 @@ function ItemList({tab}) {
     })
     setTask(projectList)
 }
-  const handleEdit = (item) => {
-    console.log(item);
+  const handleCheck = (item) => {
+
   }
 
   return (
@@ -55,8 +55,11 @@ function ItemList({tab}) {
                     <div onClick={()=>handleDelete(e.name)} id='delete'>
                       <AiFillDelete/>
                     </div>
-                    <div onClick={()=>handleEdit(e.name)} id="edit">
-                      <AiFillEdit/>
+                    <div onClick={()=>handleCheck(e.name)} id="checkbox">
+                      <div className='check-container'>
+                        <p className='check-text'>Done</p>
+                        <input type="checkbox" id="done" />
+                      </div>
                     </div>
                   </div>
                 </div>
