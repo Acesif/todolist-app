@@ -14,7 +14,10 @@ function ItemList({tab}) {
       localStorage.setItem(tab,JSON.stringify(task))
     }
     else{
-      localStorage.setItem(tab,JSON.stringify([]))
+      if(localStorage.getItem(tab)){
+        const tempItem = JSON.parse(localStorage.getItem(tab))
+        localStorage.setItem(tab,JSON.stringify(tempItem))
+      }
     }
   },[task])
   useEffect(()=>{
@@ -31,6 +34,7 @@ function ItemList({tab}) {
       return e.name !== item;
     })
     setTask(projectList)
+    localStorage.setItem(tab,JSON.stringify(projectList))
 }
   const handleCheck = (item) => {
     const checkeditems = task.map(e=>{
