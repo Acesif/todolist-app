@@ -50,12 +50,12 @@ function ItemList({tab}) {
     <div>
       <taskContext.Provider value={[task,setTask]}>
         <div className='add-to-list'>
-          <div onClick={()=> setActive(true)} className='btn btn-primary'>Add</div>
+          <div onClick={()=> setActive(true)} className='btn-content'>Add</div>
             {active && <Items tab={tab}/>}
           <div className='grid-parent'>
             {
               task?.map(e=>(
-                <div key={e.name}>
+                <div className='card' key={e.name}>
                   <div className='details'>
                     <p><strong>Task</strong><br /> {e.name}</p>
                     <p><strong>Deadline</strong><br /> {e.deadline}</p>

@@ -1,3 +1,8 @@
+:root{
+  --bg-dark: #02343F;
+  --bg-light: #b6b393;
+}
+
 *{
   margin: 0;
   padding: 0;
@@ -13,13 +18,17 @@ body {
   min-width: 100%;
 }
 .sidebar{
-  background-color: rgb(88, 88, 88);
+  background-color: var(--bg-dark);
+  color: var(--bg-light);
 }
 .content{
-  background-color: rgb(160, 160, 160);
+  background-color: var(--bg-light);
+  color: var(--bg-dark);
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+  z-index: 0;
 }
 .project-list{
   cursor: pointer;
@@ -48,9 +57,9 @@ body {
   background-color: grey;
   border: 1px solid black;
   padding: 1rem 5rem;
+  z-index: 1;
 }
 .add-to-list{
-  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -76,10 +85,6 @@ body {
 .actions>*{
   font-size: 30px;
 }
-.grid-parent>*:hover{
-  background-color: aliceblue;
-  transition: all 0.2s ease-in-out;
-}
 #delete>*,
 #edit>*{
   pointer-events: none;
@@ -94,7 +99,7 @@ body {
 }
 .check-container{
   user-select: none;
-  background-color: rgb(238, 89, 89);
+  background-color: rgb(123, 28, 28);
 }
 .check-text{
   margin-bottom: 0px;
@@ -108,5 +113,47 @@ input#done{
   height: 20px;
 }
 .checked{
-  background-color: yellowgreen;
+  background-color: rgb(80, 108, 25);
+}
+.btn-sidebar{
+  background-color: var(--bg-light);
+  color: var(--bg-dark);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid var(--bg-dark);
+  transition: all 0.2s ease-in-out;
+  text-transform: uppercase;
+}
+.btn-sidebar:hover{
+  color: var(--bg-light);
+  background-color: var(--bg-dark);
+  border: 1px solid var(--bg-light);
+  transition: all 0.2s ease-in-out;
+}
+.btn-content{
+  background-color: var(--bg-dark);
+  color: var(--bg-light);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 8px;
+  border: 1px solid var(--bg-light);
+  transition: all 0.2s ease-in-out;
+  text-transform: uppercase;
+}
+.btn-content:hover{
+  color: var(--bg-dark);
+  background-color: var(--bg-light);
+  border: 1px solid var(--bg-dark);
+  transition: all 0.2s ease-in-out;
+}
+#project-title{
+  color: var(--bg-dark);
+}
+.card{
+  background-color: var(--bg-dark);
+  color: var(--bg-light);
+}
+.card:hover{
+  transform: scale(1.1);
 }

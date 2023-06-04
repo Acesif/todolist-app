@@ -75,10 +75,10 @@ function Sidebar() {
   return (
     <div className="sidebar">
         <form className="form-inline mt-4">
-            <div className="form-group mx-sm-3 mb-2">
+            <div className="form-group mx-sm-3">
                 <input type="text" id='project-title' className="form-control" placeholder="Enter Project Name" required/>
             </div>
-            <div onClick={()=> handleAdd()} className="btn btn-primary mb-2">Add</div>
+            <div onClick={()=> handleAdd()} className="btn-sidebar">Add</div>
         </form>
         {input?.map(e=>(
            <div key={e.id} onClick={() => setTab(e.id)} className='project-list'>

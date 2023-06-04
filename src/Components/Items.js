@@ -23,7 +23,6 @@ function Items({tab}) {
 
   return (
     <div id='item-form'>
-      <div className='blur-bg'></div>
       <div className="rendered-form">
         <div>
           <h2>Add Entry</h2>
