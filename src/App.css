@@ -54,8 +54,10 @@ body {
 }
 #item-form{
   position: absolute;
-  background-color: grey;
+  background-color: var(--bg-dark);
+  color: var(--bg-light);
   border: 1px solid black;
+  border-radius: 20px;
   padding: 1rem 5rem;
   z-index: 1;
 }
@@ -156,4 +158,7 @@ input#done{
 }
 .card:hover{
   transform: scale(1.1);
+}
+.formbuilder-button{
+  display: flex;
 }

@@ -46,7 +46,7 @@ function Items({tab}) {
           </label>
         </div>
         <div className="formbuilder-button form-group">
-          <div onClick={()=>handleAdd()} className="btn btn-primary">Submit</div>
+          <div onClick={()=>handleAdd()} className="btn-sidebar">Submit</div>
         </div>
       </div>
 
