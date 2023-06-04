@@ -45,6 +45,12 @@ function ItemList({tab}) {
     })
     setTask(checkeditems)
   }
+  const dateRemaining = (e) => {
+    const date = new Date();
+    const deadlineParsed = e.deadline.split("-").join("/")
+    const deadline = new Date(deadlineParsed);
+    return deadline.getDate()-date.getDate()
+  }
 
   return (
     <div>
@@ -58,7 +64,7 @@ function ItemList({tab}) {
                 <div className='card' key={e.name}>
                   <div className='details'>
                     <p><strong>Task</strong><br /> {e.name}</p>
-                    <p><strong>Deadline</strong><br /> {e.deadline}</p>
+                    <p><strong>Deadline</strong><br /> {dateRemaining(e)} Day(s) left</p>
                     <p><strong>Description</strong><br /> {e.description}</p>
                   </div>
                   <div key={e.name} className='actions'>
